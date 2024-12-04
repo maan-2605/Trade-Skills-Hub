@@ -21,4 +21,12 @@ public class SkillExchangeDto {
     private LocalDateTime createdAt;
     private SkillExchange.ExchangeStatus status;
     private Integer exchangeHours;
+
+    public enum Status {
+        PENDING,
+        ACCEPTED,
+        REJECTED,
+        COMPLETED,
+        CANCELLED
+    }
 }

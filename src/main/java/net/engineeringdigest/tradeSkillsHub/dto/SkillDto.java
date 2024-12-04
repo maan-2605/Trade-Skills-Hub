@@ -20,4 +20,5 @@ public class SkillDto {
     private Skill.SkillLevel difficulty;
     private String userId;
     private LocalDateTime createdAt;
+
 }

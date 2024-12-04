@@ -6,10 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface SkillExchangeRepository extends MongoRepository<SkillExchange, String> {
     List<SkillExchange> findByOffererUserId(String offererUserId);
     List<SkillExchange> findByRequesterUserId(String requesterUserId);
     List<SkillExchange> findByStatus(SkillExchange.ExchangeStatus status);
-    List<SkillExchange> findByOffererUserIdOrRequesterUserId(String offererUserId, String requesterUserId);
 }
