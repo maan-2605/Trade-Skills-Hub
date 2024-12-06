@@ -1,22 +1,18 @@
 package net.engineeringdigest.tradeSkillsHub.dto;
 
 import lombok.Data;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import net.engineeringdigest.tradeSkillsHub.model.CreditTransaction;
-
 import java.time.LocalDateTime;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class CreditTransactionDto {
     private String id;
     private String userId;
-    private CreditTransaction.TransactionType type;
-    private int amount;
-    private String description;
+    private double amount;
+    private TransactionType type;
     private LocalDateTime timestamp;
+
+    public enum TransactionType {
+        EARN,   // Credits earned through skill exchanges
+        SPEND   // Credits spent on skill exchanges
+    }
 }

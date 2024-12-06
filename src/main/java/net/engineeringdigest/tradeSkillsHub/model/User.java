@@ -1,9 +1,6 @@
 package net.engineeringdigest.tradeSkillsHub.model;
 
 import lombok.Data;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,14 +10,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Document(collection = "users")
 public class User implements UserDetails {
     @Id
@@ -33,53 +27,45 @@ public class User implements UserDetails {
     private String email;
 
     private String password;
-    private String fullName;
-    private String bio;
-    private String profilePictureUrl;
-
-    private Set<String> skills;
-    private Set<String> interestedSkills;
-
-    private Set<Role> roles;
+    private String firstName;
+    private String lastName;
+    private Set<String> skills = new HashSet<>();
+    private Set<String> roles = new HashSet<>();
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    private boolean enabled;
-    private boolean accountNonExpired;
-    private boolean accountNonLocked;
-    private boolean credentialsNonExpired;
-
-    // Enum for User Roles
     public enum Role {
         ROLE_USER,
         ROLE_VERIFIED_USER,
         ROLE_ADMIN
     }
 
+    private double credits = 0.0;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles.stream()
-                .map(role -> new SimpleGrantedAuthority(role.name()))
+                .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return accountNonExpired;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return accountNonLocked;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return credentialsNonExpired;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return true;
     }
 }

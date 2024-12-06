@@ -4,8 +4,6 @@ import lombok.RequiredArgsConstructor;
 import net.engineeringdigest.tradeSkillsHub.dto.SkillDto;
 import net.engineeringdigest.tradeSkillsHub.model.Skill;
 import net.engineeringdigest.tradeSkillsHub.repository.SkillRepository;
-
-import net.engineeringdigest.tradeSkillsHub.config.ModelMapperConfig;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

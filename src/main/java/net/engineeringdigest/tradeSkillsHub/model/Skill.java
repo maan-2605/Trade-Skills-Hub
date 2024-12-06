@@ -27,7 +27,6 @@ public class Skill {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    // Nested enum for Skill Level
     public enum SkillLevel {
         BEGINNER,
         INTERMEDIATE,
